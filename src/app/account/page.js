@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { FaRegHandPointRight } from "react-icons/fa";
 
 export default async function Account({searchParams}) {
     const session = await getServerSession(authOptions);
@@ -24,9 +25,11 @@ export default async function Account({searchParams}) {
                         type="text" placeholder="Username" defaultValue={username}/>
                     <button
                         type="submit" 
-                        className="bg-emerald-700 text-white px-4 py-2 rounded-md block w-full"
+                        className="bg-emerald-700 text-white px-4 py-2 rounded-md block w-full flex items-center justify-center gap-2"
                     >
-                        Claim Your Username
+                        <FaRegHandPointRight className="text-xl" />
+                        <span>Claim Your Username</span>
+
                     </button>
                 </div>
             </form>
