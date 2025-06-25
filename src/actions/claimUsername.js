@@ -1,5 +1,5 @@
 'use server';
 
 export default async function claimUsername(formData) {
-    console.log({formData});
+    const username = formData.get('Username');
 }
