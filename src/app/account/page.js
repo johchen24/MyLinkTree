@@ -18,8 +18,17 @@ export default async function Account({searchParams}) {
                 <p className="text-center mb-6 text-gray-500">
                     Choose your username
                 </p>
-                <input className="block p-2 bg-white mx-auto border-2 border-gray-300 rounded-md" type="text" placeholder="username" />
-                <button type="submit">Claim username</button>
+                <div className="max-w-xs mx-auto">
+                    <input 
+                        className="block p-2 bg-white border-2 border-gray-300 rounded-md w-full mb-2 text-center" 
+                        type="text" placeholder="Username" defaultValue={username}/>
+                    <button
+                        type="submit" 
+                        className="bg-emerald-700 text-white px-4 py-2 rounded-md block w-full"
+                    >
+                        Claim Your Username
+                    </button>
+                </div>
             </form>
         </div>
         
