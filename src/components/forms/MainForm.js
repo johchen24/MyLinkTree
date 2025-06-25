@@ -7,7 +7,7 @@ export default function MainForm() {
 
     async function handleSubmit(e){
         e.preventDefault();
-        if (username.length > 0){
+        if (username.length > 0){ // FIX LATER: check if already signed in, pass prop from page
             await signIn('google', {callbackUrl: '/account?username='+username})
         }
     }
