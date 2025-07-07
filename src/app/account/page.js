@@ -12,7 +12,7 @@ export default async function Account({searchParams}) {
     }
     return(
         <div>
-            <UsernameForm desiredUsername={username}/>
+            <UsernameForm username={username}/>
         </div>
         
     )
