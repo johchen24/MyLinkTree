@@ -1,13 +1,18 @@
 "use client";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function MainForm() {
+export default function MainForm({user}) {
+    const router = useRouter();
     const [username, setUsername] = useState("");
 
     async function handleSubmit(e){
         e.preventDefault();
         if (username.length > 0){ // FIX LATER: check if already signed in, pass prop from page
+            if (user) {
+                router.push('/account?username='+username);
+            }
             await signIn('google', {callbackUrl: '/account?username='+username})
         }
     }

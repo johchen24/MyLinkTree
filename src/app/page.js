@@ -1,6 +1,9 @@
 import MainForm from "@/components/forms/MainForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return(
     <main>
       <section className="pt-32">
@@ -12,7 +15,7 @@ export default function Home() {
             Share your links, social profiles, contact info, then reach the world
           </h2>
         </div>
-        <MainForm />
+        <MainForm user={session?.user}/>
       </section>
     </main>
   )
