@@ -1,8 +1,9 @@
 "use client";
-import { FaRegHandPointRight } from "react-icons/fa";
 import claimUsername from "@/actions/claimUsername";
 import { useState } from "react";
 import { redirect } from "next/navigation";
+import SubmitButton from "../buttons/SubmitButton";
+import { FaRegHandPointRight } from "react-icons/fa";
 
 export default function UsernameForm({username}) {
     const [taken, setTaken] = useState(false);
@@ -10,17 +11,17 @@ export default function UsernameForm({username}) {
         const result = await claimUsername(formData);
         setTaken(result === false);
         if (result) {
-            redirect('/account/'+formData.get('Username'));
+            redirect('/account?created='+formData.get('Username'));
         }
     }
 
     return(
         <form action={handleSubmit}>
             <h1 className="text-4xl font-bold text-center mb-2">
-                Grab your username
+                Claim your username
             </h1>
             <p className="text-center mb-6 text-gray-500">
-                Choose your username
+                Choose your myLinkTree username
             </p>
             <div className="max-w-xs mx-auto">
                 <input 
@@ -31,14 +32,10 @@ export default function UsernameForm({username}) {
                         This username is already taken.
                     </div>
                 )}   
-                <button
-                    type="submit" 
-                    className="bg-emerald-700 text-white px-4 py-2 rounded-md block w-full flex items-center justify-center gap-2"
-                >
+                <SubmitButton>
                     <FaRegHandPointRight className="text-xl" />
                     <span>Claim Your Username</span>
-
-                </button>
+                </SubmitButton>
             </div>
         </form>
     )
