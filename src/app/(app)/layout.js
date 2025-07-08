@@ -5,6 +5,10 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { MdOutlineSwitchAccount } from "react-icons/md";
+import { FaChartLine } from "react-icons/fa6";
+import LogoutButton from "@/components/buttons/LogoutButton";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,15 +37,24 @@ export default async function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="flex min-h-screen">
-          <aside className='bg-emerald-900/60 p-4 w-48'>
+          <aside className='bg-emerald-900/60 p-4 w-50'>
             an aside
             <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
               <Image src={session.user.image} alt="user image" width={256} height={256} />
             </div>
-            <nav className="flex flex-col text-center mt-8 gap-4">
-              <Link href="/account">Settings</Link>
-              <Link href="/analytics">Analytics</Link>
-            </nav>
+            <div className="text-center">
+              <nav className="inline-flex mx-auto flex-col text-center mt-8 gap-4 text-emerald-950">
+                <Link href="/account" className="flex items-center gap-4">
+                  <MdOutlineSwitchAccount fixedWidth={true} className="w-6 h-6"/>
+                  <span>My Page</span>
+                </Link>
+                <Link href="/analytics" className="flex items-center gap-4">
+                  <FaChartLine fixedWidth={true} className="w-6 h-6"/>
+                  <span>Analytics</span>
+                </Link>
+                <LogoutButton />
+              </nav>
+            </div>
           </aside>
           <div className="p-6 max-w-4xl mx-auto">
             {children}
