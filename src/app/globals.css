@@ -7,14 +7,14 @@ body {
 .radio-togglers{
   @apply p-4 bg-white inline-flex gap-2 rounded-lg;
 }
-.radio-togglers span{
-  @apply p-2 px-4 shadow-md rounded-lg text-gray-800 block cursor-pointer;
+.radio-togglers div{
+  @apply p-2 px-4 shadow-md rounded-lg text-gray-800 block cursor-pointer flex gap-2 items-center;
 }
 
 .radio-togglers input[type="radio"]{
   @apply hidden;
 }
 
-.radio-togglers input[type="radio"]:checked + span{
+.radio-togglers input[type="radio"]:checked + div{
   @apply bg-emerald-800/90 text-white;
 }

@@ -1,3 +1,6 @@
+import { MdColorLens } from "react-icons/md";
+import { FaImages } from "react-icons/fa";
+    
 export default function PageSettingsForm({page}) {
     return (
         <form className="-m-4">
@@ -5,11 +8,17 @@ export default function PageSettingsForm({page}) {
                 <div className="radio-togglers">
                     <label>
                         <input type="radio" name="bgType" value="color"/>
-                        <span>Color</span>
+                        <div>
+                            <MdColorLens />
+                            <span>Color</span>
+                        </div>
                     </label>
                     <label>
                         <input type="radio" name="bgType" value="image"/>
-                        <span>Image</span>
+                        <div>
+                            <FaImages />
+                            <span>Image</span>
+                        </div>
                     </label>
                 </div>
             </div>

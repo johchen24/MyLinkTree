@@ -38,7 +38,6 @@ export default async function AppTemplate({ children }) {
       >
         <main className="flex min-h-screen">
           <aside className='bg-emerald-900/60 p-4 w-50'>
-            an aside
             <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
               <Image src={session.user.image} alt="user image" width={256} height={256} />
             </div>
