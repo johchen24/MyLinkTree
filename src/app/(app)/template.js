@@ -43,7 +43,7 @@ export default async function AppTemplate({ children }) {
               <Image src={session.user.image} alt="user image" width={256} height={256} />
             </div>
             <div className="text-center">
-              <AppSidebar />
+              <AppSidebar/>
             </div>
           </aside>
           <div className="grow">
