@@ -1,4 +1,5 @@
 'use client';
+import { useState } from "react";
 import { MdColorLens } from "react-icons/md";
 import { FaImages, FaRegSave } from "react-icons/fa";
 import Image from "next/image";
@@ -7,6 +8,9 @@ import { savePageSettings } from "@/actions/pageActions";
 import toast from "react-hot-toast";
 
 export default function PageSettingsForm({page, user}) {
+    const [bgType, setBgType] = useState(page.bgType);
+    const [bgColor, setBgColor] = useState(page.bgColor);
+
     async function saveBaseSettings(formData){
         const result = await savePageSettings(formData);
         if (result) {
@@ -17,22 +21,30 @@ export default function PageSettingsForm({page, user}) {
     return (
         <div className="-m-4">
             <form action={saveBaseSettings}>
-                <div className="bg-gray-300 h-56 flex justify-center items-center">
-                    <div className="radio-togglers"> {/* This went into radio togglers*/}
-                        <label>
-                            <input type="radio" name="bgType" value="color" defaultChecked={page.bgType === 'color'}/>
-                            <div>
-                                <MdColorLens />
-                                <span>Color</span>
+                <div className="bg-gray-300 h-72 flex justify-center items-center flex-col mb-8" style={{backgroundColor: page.bgType === 'color' ? page.bgColor : 'transparent'}}>
+                    <div className="bg-white rounded-lg p-3 shadow-lg">
+                        <div className="radio-togglers mb-4"> {/* This went into radio togglers*/}
+                            <label>
+                                <input type="radio" name="bgType" value="color" defaultChecked={page.bgType === 'color'} onClick/>
+                                <div>
+                                    <MdColorLens />
+                                    <span>Color</span>
+                                </div>
+                            </label>
+                            <label>
+                                <input type="radio" name="bgType" value="image" defaultChecked={page.bgType === 'image'}/>
+                                <div>
+                                    <FaImages />
+                                    <span>Image</span>
+                                </div>
+                            </label>
+                        </div>
+                        {bgType === 'color' && (
+                            <div className="flex items-center gap-2 justify-center">
+                                <span>Background Color</span>
+                                <input type="color" name="bgColor" defaultValue={page.bgColor}/>         
                             </div>
-                        </label>
-                        <label>
-                            <input type="radio" name="bgType" value="image" defaultChecked={page.bgType === 'image'}/>
-                            <div>
-                                <FaImages />
-                                <span>Image</span>
-                            </div>
-                        </label>
+                        )}
                     </div>
                 </div>
                 <div className="flex justify-center -mb-12">

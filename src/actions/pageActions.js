@@ -12,12 +12,14 @@ export async function savePageSettings(formData) {
         const location = formData.get('location');
         const bio = formData.get('bio');
         const bgType = formData.get('bgType');
+        const bgColor = formData.get('bgColor');
         await Page.updateOne({owner:session?.user?.email}, {
             $set: {
                 displayName: displayName,
                 location: location,
                 bio: bio,
-                bgType: bgType
+                bgType: bgType,
+                bgColor: bgColor
             }
         })
         return true;
