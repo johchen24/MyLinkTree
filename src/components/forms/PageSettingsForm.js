@@ -21,11 +21,11 @@ export default function PageSettingsForm({page, user}) {
     return (
         <div className="-m-4">
             <form action={saveBaseSettings}>
-                <div className="bg-gray-300 h-72 flex justify-center items-center flex-col mb-8" style={{backgroundColor: page.bgType === 'color' ? page.bgColor : 'transparent'}}>
+                <div className="bg-gray-300 h-72 flex justify-center items-center flex-col mb-8" style={{backgroundColor: bgType === 'color' ? bgColor : 'transparent'}}>
                     <div className="bg-white rounded-lg p-3 shadow-lg">
                         <div className="radio-togglers mb-4"> {/* This went into radio togglers*/}
                             <label>
-                                <input type="radio" name="bgType" value="color" defaultChecked={page.bgType === 'color'} onClick/>
+                                <input type="radio" name="bgType" value="color" defaultChecked={page.bgType === 'color'}/>
                                 <div>
                                     <MdColorLens />
                                     <span>Color</span>
