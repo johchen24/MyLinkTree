@@ -4,8 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Image from "next/image"
-import { headers } from "next/headers";
 import AppSidebar from "@/components/layout/AppSidebar";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +23,6 @@ export const metadata = {
 };
 
 export default async function AppTemplate({ children }) {
-  const headersList = headers();
-  console.log("hello");
 
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -36,6 +34,7 @@ export default async function AppTemplate({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Toaster/>
         <main className="flex min-h-screen">
           <aside className='bg-emerald-900/60 p-4 w-50'>
             <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
