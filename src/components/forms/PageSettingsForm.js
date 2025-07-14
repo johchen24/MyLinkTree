@@ -20,14 +20,14 @@ export default function PageSettingsForm({page, user}) {
                 <div className="bg-gray-300 h-56 flex justify-center items-center">
                     <div className="radio-togglers"> {/* This went into radio togglers*/}
                         <label>
-                            <input type="radio" name="bgType" value="color"/>
+                            <input type="radio" name="bgType" value="color" defaultChecked={page.bgType === 'color'}/>
                             <div>
                                 <MdColorLens />
                                 <span>Color</span>
                             </div>
                         </label>
                         <label>
-                            <input type="radio" name="bgType" value="image"/>
+                            <input type="radio" name="bgType" value="image" defaultChecked={page.bgType === 'image'}/>
                             <div>
                                 <FaImages />
                                 <span>Image</span>

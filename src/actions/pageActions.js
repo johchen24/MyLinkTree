@@ -11,11 +11,13 @@ export async function savePageSettings(formData) {
         const displayName = formData.get('displayName');
         const location = formData.get('location');
         const bio = formData.get('bio');
+        const bgType = formData.get('bgType');
         await Page.updateOne({owner:session?.user?.email}, {
             $set: {
                 displayName: displayName,
                 location: location,
-                bio: bio
+                bio: bio,
+                bgType: bgType
             }
         })
         return true;
