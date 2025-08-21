@@ -4,6 +4,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: "*.googleusercontent.com",
+            },
+            {
+                hostname: "mylinktree-files.s3.amazonaws.com",
             }
         ]
     }

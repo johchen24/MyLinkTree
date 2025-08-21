@@ -18,7 +18,10 @@ export default async function Account({searchParams}) {
     const page = await Page.findOne({owner: session?.user?.email});
     if (page){
         return (
-            <PageSettingsForm page={page} user={session?.user}/>
+            <>
+                <PageSettingsForm page={page} user={session?.user}/>
+                test
+            </>
         )
     }
     return(

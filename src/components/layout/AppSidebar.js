@@ -11,7 +11,7 @@ export default function AppSidebar() {
     console.log(path);
 
     return (
-        <nav className="inline-flex mx-auto flex-col text-center mt-12 gap-4 text-emerald-950">
+        <nav className="inline-flex mx-auto flex-col text-center mt-8 gap-4 text-emerald-950">
             <Link href="/account" className={"flex gap-4 p-2 rounded-lg " + (path === '/account' ? 'bg-emerald-900/10 font-bold' : '')}>
                 <MdOutlineSwitchAccount className="w-6 h-6"/>
                 <span>My Page</span>
