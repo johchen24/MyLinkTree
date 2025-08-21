@@ -1,4 +1,5 @@
 import { S3Client } from '@aws-sdk/client-s3';
+import uniqid from 'uniqid';
 
 export async function POST(req) {
     const formData = await req.formData();
@@ -13,6 +14,11 @@ export async function POST(req) {
             },
         });
 
-        const uploadParams = {}
+        const randomId = uniqid();
+        const extension = file.name.split('.').pop();
+        const newFileName = `${randomId}.${extension}`;
+
+        console.log(newFileName);
+        return Response.json(true);
     }
 }

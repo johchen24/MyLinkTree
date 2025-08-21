@@ -4270,6 +4270,11 @@ unbox-primitive@^1.1.0:
     has-symbols "^1.1.0"
     which-boxed-primitive "^1.1.1"
 
+uniqid@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/uniqid/-/uniqid-5.4.0.tgz#4e17bfcab66dfe33563411ae0c801f46ef964e66"
+  integrity sha512-38JRbJ4Fj94VmnC7G/J/5n5SC7Ab46OM5iNtSstB/ko3l1b5g7ALt4qzHFgGciFkyiRNtDXtLNb+VsxtMSE77A==
+
 unrs-resolver@^1.6.2:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/unrs-resolver/-/unrs-resolver-1.9.0.tgz#22877e2e0f1ba3f848f75f7be5ecb81b634066dc"
