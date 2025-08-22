@@ -6,12 +6,14 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { FaSquareInstagram, FaDiscord } from "react-icons/fa6";
 import { FaFacebook, FaTiktok, FaYoutube, FaGithub, FaTelegram } from "react-icons/fa";
+import { Event } from "@/models/eventSchema";
 
 export default async function UserPage({ params }) {
     const { uri } = await params;
     mongoose.connect(process.env.MONGO_URI);
     const page = await Page.findOne({ uri }).lean();
     const user = await User.findOne({ email: page.owner }).lean();
+    await Event.create({uri:uri, type:'view', page: uri});
 
     // Build social links based on saved `buttons` map
     const buttons = page?.buttons || {};

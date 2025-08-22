@@ -5,7 +5,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Image from "next/image"
 import AppSidebar from "@/components/layout/AppSidebar";
-import { Toaster } from "react-hot-toast";
+import ToastProvider from "@/components/ToastProvider";
 import mongoose from "mongoose";
 import { Page } from "@/models/pageSchema";
 import { FaLink } from "react-icons/fa";
@@ -37,7 +37,7 @@ export default async function AppTemplate({ children }) {
 
   return (
       <>
-        <Toaster/>
+        <ToastProvider/>
         <main className="flex min-h-screen">
           <aside className='bg-emerald-900/70 p-4 pt-8 w-50'>
             <div className="sticky top-0 pt-2">
