@@ -36,7 +36,7 @@ export default async function AppTemplate({ children }) {
       >
         <Toaster/>
         <main className="flex min-h-screen">
-          <aside className='bg-emerald-900/60 p-4 pt-8 w-50'>
+          <aside className='bg-emerald-900/70 p-4 pt-8 w-50'>
             <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
               <Image src={session.user.image} alt="user image" width={256} height={256} />
             </div>
@@ -45,10 +45,7 @@ export default async function AppTemplate({ children }) {
             </div>
           </aside>
           <div className="grow">
-            <div className="bg-white m-8 p-4 shadow rounded-lg">
               {children}
-            </div>
-
           </div>
         </main>
       </body>

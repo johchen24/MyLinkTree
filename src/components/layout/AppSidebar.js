@@ -12,16 +12,16 @@ export default function AppSidebar() {
 
     return (
         <nav className="inline-flex mx-auto flex-col text-center mt-8 gap-4 text-emerald-950">
-            <Link href="/account" className={"flex gap-4 p-2 rounded-lg " + (path === '/account' ? 'bg-emerald-900/10 font-bold' : '')}>
+            <Link href="/account" className={"flex gap-4 p-2 rounded-lg cursor-pointer transition-colors hover:bg-emerald-900/10 " + (path === '/account' ? 'bg-emerald-900/10 font-bold' : '')}>
                 <MdOutlineSwitchAccount className="w-6 h-6"/>
                 <span>My Page</span>
             </Link>
-            <Link href="/analytics" className={"flex gap-4 p-2 rounded-lg " + (path === '/analytics' ? 'bg-emerald-900/10 font-bold' : '')}>
+            <Link href="/analytics" className={"flex gap-4 p-2 rounded-lg cursor-pointer transition-colors hover:bg-emerald-900/10 " + (path === '/analytics' ? 'bg-emerald-900/10 font-bold' : '')}>
                 <FaChartLine className="w-6 h-6"/>
                 <span>Analytics</span>
             </Link>
-            <LogoutButton className={'flex gap-4 p-2 rounded-lg'}/>
-            <Link href="/" className="flex gap-4 p-2 rounded-lg border-t border-emerald-900/60 pt-4 mt-4">
+            <LogoutButton className={'flex gap-4 p-2 rounded-lg cursor-pointer transition-colors hover:bg-emerald-900/10'}/>
+            <Link href="/" className="flex gap-4 p-2 rounded-lg border-t border-emerald-900/60 pt-4 mt-4 cursor-pointer transition-colors hover:bg-emerald-900/10">
                 <FaHome className="w-6 h-6"/>
                 <span>Back to Home</span>
             </Link>

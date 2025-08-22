@@ -36,3 +36,20 @@ export async function savePageSettings(formData) {
     return false;
 
 }
+
+export async function savePageSocials(formData){
+    mongoose.connect(process.env.MONGO_URI);
+    const session = await getServerSession(authOptions);
+    if (session) {
+        const buttonsValues = {};
+        formData.forEach((value, key) => {
+            buttonsValues[key] = value;
+        });
+        const dataToUpdate = {buttons: buttonsValues};
+        await Page.updateOne({ owner: session?.user?.email }, {
+            $set: dataToUpdate
+        });
+        return true;
+    }
+    return false;
+}

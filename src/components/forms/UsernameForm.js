@@ -25,14 +25,14 @@ export default function UsernameForm({username}) {
             </p>
             <div className="max-w-xs mx-auto">
                 <input 
-                    className="block p-2 bg-white border-2 border-gray-300 rounded-md w-full mb-2 text-center" 
+                    className="block p-2 bg-white border-2 border-gray-300 rounded-md w-full mb-2 text-center focus:outline-none focus:ring-1 focus:border-slate-800/60" 
                     type="text" name="Username" placeholder="Username" defaultValue={username}/>
                 {taken && (
                     <div className="bg-red-100 border border-red-500 p-2 mb-2">
                         This username is already taken.
                     </div>
                 )}   
-                <SubmitButton>
+                <SubmitButton variant="slate">
                     <FaRegHandPointRight className="text-xl" />
                     <span>Claim Your Username</span>
                 </SubmitButton>

@@ -5,6 +5,7 @@ import UsernameForm from "@/components/forms/UsernameForm";
 import { Page } from "@/models/pageSchema";
 import mongoose from "mongoose";
 import PageSettingsForm from "@/components/forms/PageSettingsForm";
+import PageSocialsForm from "@/components/forms/PageSocialsForm";
 
 export default async function Account({searchParams}) {
     const session = await getServerSession(authOptions);
@@ -20,7 +21,7 @@ export default async function Account({searchParams}) {
         return (
             <>
                 <PageSettingsForm page={page} user={session?.user}/>
-                test
+                <PageSocialsForm page={page} user={session?.user}/>
             </>
         )
     }
