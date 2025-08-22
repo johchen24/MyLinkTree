@@ -7,6 +7,7 @@ import SubmitButton from "../buttons/SubmitButton";
 import { savePageSettings } from "@/actions/pageActions";
 import toast from "react-hot-toast";
 import SectionBox from "../layout/SectionBox";
+import { upload } from "@/libs/upload";
 
 export default function PageSettingsForm({page, user}) {
     const [bgType, setBgType] = useState(page.bgType);
@@ -18,35 +19,6 @@ export default function PageSettingsForm({page, user}) {
         const result = await savePageSettings(formData);
         if (result) {
             toast.success('Saved!');
-        }
-    }
-
-    async function upload(e, callbackFn){
-        const file = e.target.files?.[0];
-        if (file){
-            const uploadPromise = new Promise((resolve, reject) => {
-                const data = new FormData();
-                data.set('file', file);
-                fetch('/api/upload', {
-                    method: 'POST',
-                    body: data
-                }).then(res => {
-                    if (res.ok) {
-                        res.json().then(link=>{
-                            callbackFn(link);
-                            resolve(link);
-                        });
-                    } else {
-                        reject();
-                    }
-                });
-            });
-
-            toast.promise(uploadPromise, {
-                loading: 'Uploading...',
-                success: 'Uploaded!',
-                error: 'Failed to upload'
-            });
         }
     }
 

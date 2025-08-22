@@ -16,12 +16,22 @@ export default async function Account({searchParams}) {
     }
 
     mongoose.connect(process.env.MONGO_URI);    
-    const page = await Page.findOne({owner: session?.user?.email});
-    if (page){
+    // Use lean() to ensure we pass a plain object to client components
+    const pageDoc = await Page.findOne({owner: session?.user?.email}).lean();
+    if (pageDoc){
+        const clientSafePage = {
+            displayName: pageDoc.displayName ?? '',
+            location: pageDoc.location ?? '',
+            bio: pageDoc.bio ?? '',
+            bgType: pageDoc.bgType ?? 'color',
+            bgColor: pageDoc.bgColor ?? '#000000',
+            bgImage: pageDoc.bgImage ?? '',
+            buttons: pageDoc.buttons ?? {},
+        };
         return (
             <>
-                <PageSettingsForm page={page} user={session?.user}/>
-                <PageSocialsForm page={page} user={session?.user}/>
+                <PageSettingsForm page={clientSafePage} user={session?.user}/>
+                <PageSocialsForm page={clientSafePage} user={session?.user}/>
             </>
         )
     }

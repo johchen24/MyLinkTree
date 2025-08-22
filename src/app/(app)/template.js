@@ -6,6 +6,10 @@ import { redirect } from "next/navigation";
 import Image from "next/image"
 import AppSidebar from "@/components/layout/AppSidebar";
 import { Toaster } from "react-hot-toast";
+import mongoose from "mongoose";
+import { Page } from "@/models/pageSchema";
+import { FaLink } from "react-icons/fa";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,27 +32,34 @@ export default async function AppTemplate({ children }) {
   if (!session) {
     return redirect("/");
   }
+  mongoose.connect(process.env.MONGO_URI);
+  const page = await Page.findOne({owner: session.user.email});
 
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <>
         <Toaster/>
         <main className="flex min-h-screen">
           <aside className='bg-emerald-900/70 p-4 pt-8 w-50'>
-            <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
-              <Image src={session.user.image} alt="user image" width={256} height={256} />
-            </div>
-            <div className="text-center">
-              <AppSidebar/>
+            <div className="sticky top-0 pt-2">
+              <div className="rounded-full overflow-hidden aspect-square w-30 mx-auto">
+                <Image src={session.user.image} alt="user image" width={256} height={256} />
+              </div>
+              {page && (
+                <Link className="text-center mt-4 flex gap-1 items-center justify-center" href={'/'+page.uri} target="_blank">
+                  <FaLink className="w-6 h-6 text-amber-700/80"/>
+                  <span className="text-xl text-gray-700">/</span>
+                  <span>{page.uri}</span>
+                </Link>
+              )}
+              <div className="text-center">
+                <AppSidebar/>
+              </div>
             </div>
           </aside>
           <div className="grow">
               {children}
           </div>
         </main>
-      </body>
-    </html>
+      </>
   );
 }

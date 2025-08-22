@@ -8,7 +8,7 @@ import {FaSquareInstagram, FaDiscord} from "react-icons/fa6";
 import {FaFacebook, FaTiktok, FaYoutube, FaGithub, FaTelegram, FaPlus, FaRegSave, FaTrash} from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
-const allButtons = [
+export const allButtons = [
     {key: 'email', 'label': 'email', icon: MdEmail, placeholder: 'johndoe@example.com'},
     {key: 'mobile', 'label': 'mobile', icon: MdPhone, placeholder: '+1 123-456-7890'},
     {key: 'instagram', 'label': 'instagram', icon: FaSquareInstagram, placeholder: 'johndoe'},
